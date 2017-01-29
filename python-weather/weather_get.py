@@ -23,13 +23,12 @@
 #
 import urllib
 import json
-import sys
 
 units = "metric" # metric or imperial
 previous_weather_file = "weather_log.txt"
 api_key_path = "api_key.txt"
 previous_weather = ""
-city = "Oslo,no"
+city = "Cheltenham,uk"
 
 try:
 	log = open(previous_weather_file,"r")
@@ -54,14 +53,11 @@ log = open(previous_weather_file,'w')
 log.write(weather)
 log.close()
 
-
-
 weather_json = json.loads(weather)
 #print weather
 #print weather_json['weather']
 curr_temp = float(weather_json['main']['temp'])
 print "Temperature is: %.2f degrees" % (curr_temp)
-
 
 if (not previous_weather == ""):
 	prev_weather_json = json.loads(previous_weather)
